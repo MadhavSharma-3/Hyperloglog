@@ -189,27 +189,3 @@ if __name__ == "__main__":
         print("Final Error: {:.2f}%".format(y_axis_error[-1]))
 
 
-# things to learn for the presentation : 
-#   whats going on in the algorithm obviously
-#   the analysis of hash function 
-#   bernoulli trials trailing zeroes idea for the hash string 
-#   standard error buckets idea and why variance is inv proportional to sqrt m 
-#   why harmonic mean is used here and its formal proof 
-#   log logn memory analysis
-#   (optional) the extreme cases idea 
-
-
-# Summary: Presentation Checklist
-# The Problem: 8GB vs 12KB (The Hook).
-
-# The Intuition: Coin Flips & Leading Zeros (The Mechanism).
-
-# The Variance: Why we need 4096 buckets (The Stability).
-
-# The Estimator: Why Harmonic Mean is used (The Filter).
-
-# The Name: loglogN derivation (The Efficiency). 
-
-# The Fixes: Small/Large range correction (The Engineering).
-
-# The Results:  error graphs (The Proof).
