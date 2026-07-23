@@ -3,7 +3,7 @@ import random
 import time
 
 
-# --- SECTION 1: Hashing Utility (Checklist Item 1) ---
+# --- SECTION 1: Hashing Utility ---
 def murmur3_32(key, seed=0):
     """
     Pure Python implementation of MurmurHash3 (32-bit).
@@ -49,10 +49,10 @@ def murmur3_32(key, seed=0):
 
 
 
-# --- SECTION 2: The HyperLogLog Class (Checklist Items 2, 3, 4) ---
+# --- SECTION 2: The HyperLogLog Class ---
 class HyperLogLog:
     def __init__(self, p=12):
-        # Checklist Item 2a: Initialization
+        # Initialization
         if not (4 <= p <= 16):
             raise ValueError("p must be between 4 and 16")
         self.p = p
@@ -75,7 +75,7 @@ class HyperLogLog:
         return rho
 
     def add(self, item):
-        # Checklist Item 2b: Bit Manipulation Logic
+        # Bit Manipulation Logic
         x = murmur3_32(str(item))
         j = x >> (32 - self.p)                  # Register Index
         w = x & ((1 << (32 - self.p)) - 1)      # Remainder for Zero Counting
@@ -85,11 +85,11 @@ class HyperLogLog:
             self.registers[j] = rho 
 
     def count(self):
-        # Checklist Item 3: Raw Estimate
+        # Raw Estimate
         Z_inv = sum(2.0 ** -val for val in self.registers)
         E = self.alpha * (self.m ** 2) / Z_inv
         
-        # Checklist Item 4: Range Corrections
+        # Range Corrections
         if E <= 2.5 * self.m: # Small Range (Linear Counting)
             V = self.registers.count(0)
             if V != 0:
